@@ -1,0 +1,67 @@
+<form>
+<table class="table ">
+	<thead>
+		<tr>
+
+			<th>Codigo</th>
+			<th>Cliente</th>
+			<th>Direccion</th>
+			<th>Latitud</th>
+			<th>Longitud</th>
+			<th>Repartidor</th>
+			<th>Dia</th>
+			<th>***</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<th><input type="text" ng-model="codigo"></th>
+			<th><input type="text" ng-model="cliente"></th>
+			<th><input type="text" ng-model="direccion"></th>
+			<th><input type="text" ng-model="latitud"></th>
+			<th><input type="text" ng-model="longitud"></th>
+			<th>
+				<select name="repeatSelect" id="ciudad" ng-model="repartidor">
+    			  <option>Osvaldo</option>
+    			  <option>Gustavo</option>
+    			  <option>Perals</option>
+    			  <option>Sebastian</option>
+    			  <option>Diego</option>
+    			  <option>Cacho</option>
+    			  <option>Carlos</option>
+    			  <option>Miguel</option>
+    			  <option>Marcelo M.</option>
+ 		  	  </select>
+			</th>
+			<th> 
+				<select name="repeatSelect" id="ciudad" ng-model="diareparto">
+    			  <option>Lunes</option>
+    			  <option>Martes</option>
+    			  <option>Miercoles</option>
+    			  <option>Jueves</option>
+    			  <option>Sabado</option>					
+    			  <option>Domingo</option>
+    			  <option>Lunes y Jueves</option>
+    			  <option>Martes y Viernes</option>
+    			  <option>Miercoles y Sabados</option>
+    			  <option>Domingos</option>
+ 		  	  </select>
+ 		  	</th>
+			<th><input type="submit" value="Agregar" ng-click="agregar()"></th>
+		</tr>
+
+	</tbody>
+</table>
+</form>
+</div>
+<ui-gmap-google-map center='map.center' zoom='map.zoom' bounds="map.bounds">
+    <ui-gmap-polygon static="true" ng-repeat="p in polygons track by p.id" path="p.path" stroke="p.stroke" visible="p.visible" geodesic="p.geodesic" fill="p.fill" fit="false" editable="p.editable" draggable="p.draggable">
+    </ui-gmap-polygon>
+
+    <ui-gmap-polygon static="true" ng-repeat="q in polygonsgreen track by q.id" path="q.path" stroke="q.stroke" visible="q.visible" geodesic="q.geodesic" fill="q.fill" fit="false" editable="q.editable" draggable="q.draggable">
+    </ui-gmap-polygon>
+
+    <ui-gmap-polygon static="true" ng-repeat="s in polygonsyellow track by s.id" path="s.path" stroke="s.stroke" visible="s.visible" geodesic="s.geodesic" fill="s.fill" fit="false" editable="s.editable" draggable="s.draggable">
+    </ui-gmap-polygon>
+
+</ui-gmap-google-map>
