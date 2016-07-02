@@ -6,6 +6,7 @@
 			<th>Codigo</th>
 			<th>Cliente</th>
 			<th>Direccion</th>
+			<th>Observaciones</th>
 			<th>Latitud</th>
 			<th>Longitud</th>
 			<th>Repartidor</th>
@@ -15,11 +16,12 @@
 	</thead>
 	<tbody>
 		<tr>
-			<th><input type="text" ng-model="codigo"></th>
-			<th><input type="text" ng-model="cliente"></th>
+			<th><input type="text" ng-model="codigo" style="max-width:80px;"></th>
+			<th><input type="text" ng-model="cliente" style="max-width:80px;"></th>
 			<th><input type="text" ng-model="direccion"></th>
-			<th><input type="text" ng-model="latitud"></th>
-			<th><input type="text" ng-model="longitud"></th>
+			<th><input type="text" ng-model="observacion"></th>
+			<th><input type="text" ng-model="latitud" style="max-width:90px;"></th>
+			<th><input type="text" ng-model="longitud" style="max-width:90px;"></th>
 			<th>
 				<select name="repeatSelect" id="ciudad" ng-model="repartidor">
     			  <option>Osvaldo</option>
@@ -54,7 +56,11 @@
 </table>
 </form>
 </div>
-<ui-gmap-google-map center='map.center' zoom='map.zoom' bounds="map.bounds">
+<ui-gmap-google-map center='loc' zoom='zoom'>
+
+
+   <ui-gmap-markers idkey='clientes.$index'  models="clientes" coords="'location'"></ui-gmap-markers>
+
     <ui-gmap-polygon static="true" ng-repeat="p in polygons track by p.id" path="p.path" stroke="p.stroke" visible="p.visible" geodesic="p.geodesic" fill="p.fill" fit="false" editable="p.editable" draggable="p.draggable">
     </ui-gmap-polygon>
 
@@ -65,3 +71,11 @@
     </ui-gmap-polygon>
 
 </ui-gmap-google-map>
+
+<div>
+	<input type="text" ng-model="search" />
+	<button class="btn" type="button" ng-click="geoCode()" ng-disabled="search.length == 0" title="serch">
+		    &nbsp;<i class="icon-search"></i>Lugar?
+	</button>
+
+</div>

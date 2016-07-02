@@ -28,11 +28,4 @@ angular
       .otherwise({
         redirectTo: '/'
       });
-  })
-  .config(function(uiGmapGoogleMapApiProvider) {
-    uiGmapGoogleMapApiProvider.configure({
-        key: 'AIzaSyA5cFsG_A_zEOdrWod2xgO2Z1DfXCskA9I',
-        v: '3.20', //defaults to latest 3.X anyhow
-        libraries: 'weather,geometry,visualization'
-    });
-});
+  });
